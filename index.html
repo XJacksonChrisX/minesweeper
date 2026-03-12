@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>掃地雷</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>💣 掃地雷</h1>
+
+  <div id="controls">
+    <select id="difficulty" aria-label="難度選擇">
+      <option value="easy">初級 (9×9, 10 地雷)</option>
+      <option value="medium">中級 (16×16, 40 地雷)</option>
+      <option value="hard">高級 (16×30, 99 地雷)</option>
+    </select>
+  </div>
+
+  <div id="game">
+    <div id="panel">
+      <div class="display" id="mine-count">010</div>
+      <button id="face-btn" title="重新開始" aria-label="重新開始">😊</button>
+      <div class="display" id="timer">000</div>
+    </div>
+    <div id="board"></div>
+  </div>
+
+  <div id="status"></div>
+
+  <script src="minesweeper.js"></script>
+</body>
+</html>

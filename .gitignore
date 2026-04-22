@@ -1,0 +1,19 @@
+# Compilation artifacts
+*.o
+minesweeper
+*.exe
+
+# Build directories
+build/
+*.out
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db

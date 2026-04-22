@@ -12,6 +12,7 @@ set(SOURCES
     src/game.cpp
     src/board.cpp
     src/cell.cpp
+    src/display.cpp
 )
 
 # 創建可執行文件

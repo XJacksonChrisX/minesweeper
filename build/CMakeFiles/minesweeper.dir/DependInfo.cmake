@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspaces/game/src/board.cpp" "CMakeFiles/minesweeper.dir/src/board.cpp.o" "gcc" "CMakeFiles/minesweeper.dir/src/board.cpp.o.d"
   "/workspaces/game/src/cell.cpp" "CMakeFiles/minesweeper.dir/src/cell.cpp.o" "gcc" "CMakeFiles/minesweeper.dir/src/cell.cpp.o.d"
+  "/workspaces/game/src/display.cpp" "CMakeFiles/minesweeper.dir/src/display.cpp.o" "gcc" "CMakeFiles/minesweeper.dir/src/display.cpp.o.d"
   "/workspaces/game/src/game.cpp" "CMakeFiles/minesweeper.dir/src/game.cpp.o" "gcc" "CMakeFiles/minesweeper.dir/src/game.cpp.o.d"
   "/workspaces/game/src/main.cpp" "CMakeFiles/minesweeper.dir/src/main.cpp.o" "gcc" "CMakeFiles/minesweeper.dir/src/main.cpp.o.d"
   )

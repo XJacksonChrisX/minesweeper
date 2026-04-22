@@ -41,62 +41,10 @@ void Game::initializeDifficulty(int difficulty) {
     board->initialize();
 }
 
-void Game::start() {
-    cout << "\n========== 歡迎來到踩地雷遊戲 ==========" << endl;
-    cout << "難度: ";
-    if (difficulty == 1) cout << "簡單 (8x8, 10個地雷)" << endl;
-    else if (difficulty == 2) cout << "中等 (12x12, 30個地雷)" << endl;
-    else cout << "困難 (16x16, 40個地雷)" << endl;
-    cout << "========================================\n" << endl;
-}
-
-void Game::displayBoard() {
-    cout << "\n  ";
-    // 顯示列號
-    for (int j = 0; j < board->getCols(); j++) {
-        cout << j % 10 << " ";
-    }
-    cout << endl;
-    
-    // 顯示棋盤
-    for (int i = 0; i < board->getRows(); i++) {
-        cout << i % 10 << " ";  // 顯示行號
-        for (int j = 0; j < board->getCols(); j++) {
-            Cell& cell = board->getCell(i, j);
-            
-            if (!cell.getRevealed()) {
-                if (cell.getMarked()) {
-                    cout << "🚩 ";  // 標記的格子
-                } else {
-                    cout << "□ ";  // 未揭露的格子
-                }
-            } else {
-                if (cell.getMine()) {
-                    cout << "💣 ";  // 地雷
-                } else if (cell.getAdjacentMines() == 0) {
-                    cout << "· ";  // 空格
-                } else {
-                    cout << cell.getAdjacentMines() << " ";  // 數字
-                }
-            }
-        }
-        cout << endl;
-    }
-    cout << endl;
-}
-
-void Game::displayMenu() {
-    cout << "操作命令:" << endl;
-    cout << "  r row col  - 揭露 (row, col) 的格子" << endl;
-    cout << "  m row col  - 標記 (row, col) 為地雷" << endl;
-    cout << "  q          - 退出遊戲" << endl;
-    cout << endl;
-}
-
 void Game::play() {
-    start();
-    displayBoard();
-    displayMenu();
+    Display::showWelcome(difficulty);
+    Display::showBoard(board);
+    Display::showMenu();
     
     string command;
     int row, col;
@@ -114,38 +62,25 @@ void Game::play() {
                 revealCell(row, col);
                 state = checkGameState();
             } else {
-                cout << "座標無效！" << endl;
+                Display::showError("座標無效");
             }
         } else if (command == "m") {
             cin >> row >> col;
             if (board->isValid(row, col)) {
                 markCell(row, col);
             } else {
-                cout << "座標無效！" << endl;
+                Display::showError("座標無效");
             }
         } else {
-            cout << "命令無效！" << endl;
+            Display::showError("命令無效");
             continue;
         }
         
-        displayBoard();
+        Display::showBoard(board);
     }
     
     // 顯示最終結果
-    if (state == WON) {
-        cout << "\n🎉 恭喜！您贏了！ 🎉" << endl;
-    } else if (state == LOST) {
-        cout << "\n💥 遊戲結束，您踩到地雷了！ 💥" << endl;
-        // 顯示所有地雷
-        for (int i = 0; i < board->getRows(); i++) {
-            for (int j = 0; j < board->getCols(); j++) {
-                if (board->getCell(i, j).getMine()) {
-                    board->getCell(i, j).setRevealed(true);
-                }
-            }
-        }
-        displayBoard();
-    }
+    Display::showGameResult(state == WON, board);
 }
 
 GameState Game::checkGameState() {

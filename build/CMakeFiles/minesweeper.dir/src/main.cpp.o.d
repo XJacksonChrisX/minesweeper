@@ -1,7 +1,8 @@
 CMakeFiles/minesweeper.dir/src/main.cpp.o: /workspaces/game/src/main.cpp \
  /usr/include/stdc-predef.h /workspaces/game/include/game.h \
  /workspaces/game/include/board.h /workspaces/game/include/cell.h \
- /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
+ /workspaces/game/include/display.h /usr/include/c++/13/iostream \
+ /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \

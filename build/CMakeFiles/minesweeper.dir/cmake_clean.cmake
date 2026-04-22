@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/minesweeper.dir/src/board.cpp.o.d"
   "CMakeFiles/minesweeper.dir/src/cell.cpp.o"
   "CMakeFiles/minesweeper.dir/src/cell.cpp.o.d"
+  "CMakeFiles/minesweeper.dir/src/display.cpp.o"
+  "CMakeFiles/minesweeper.dir/src/display.cpp.o.d"
   "CMakeFiles/minesweeper.dir/src/game.cpp.o"
   "CMakeFiles/minesweeper.dir/src/game.cpp.o.d"
   "CMakeFiles/minesweeper.dir/src/main.cpp.o"

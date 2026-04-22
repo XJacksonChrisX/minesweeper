@@ -177,6 +177,30 @@ src/cell.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minesweeper.dir/build.make CMakeFiles/minesweeper.dir/src/cell.cpp.s
 .PHONY : src/cell.cpp.s
 
+src/display.o: src/display.cpp.o
+.PHONY : src/display.o
+
+# target to build an object file
+src/display.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minesweeper.dir/build.make CMakeFiles/minesweeper.dir/src/display.cpp.o
+.PHONY : src/display.cpp.o
+
+src/display.i: src/display.cpp.i
+.PHONY : src/display.i
+
+# target to preprocess a source file
+src/display.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minesweeper.dir/build.make CMakeFiles/minesweeper.dir/src/display.cpp.i
+.PHONY : src/display.cpp.i
+
+src/display.s: src/display.cpp.s
+.PHONY : src/display.s
+
+# target to generate assembly for a file
+src/display.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minesweeper.dir/build.make CMakeFiles/minesweeper.dir/src/display.cpp.s
+.PHONY : src/display.cpp.s
+
 src/game.o: src/game.cpp.o
 .PHONY : src/game.o
 
@@ -240,6 +264,9 @@ help:
 	@echo "... src/cell.o"
 	@echo "... src/cell.i"
 	@echo "... src/cell.s"
+	@echo "... src/display.o"
+	@echo "... src/display.i"
+	@echo "... src/display.s"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"

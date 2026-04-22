@@ -216,15 +216,6 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-Minesweeper_BINARY_DIR:STATIC=/workspaces/game/build
-
-//Value Computed by CMake
-Minesweeper_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Minesweeper_SOURCE_DIR:STATIC=/workspaces/game
-
-//Value Computed by CMake
 minesweeper_BINARY_DIR:STATIC=/workspaces/game/build
 
 //Value Computed by CMake

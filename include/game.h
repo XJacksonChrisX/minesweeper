@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "board.h"
+#include "display.h"
 
 enum GameState {
     PLAYING,   // 遊戲進行中
@@ -20,9 +21,6 @@ public:
     ~Game();
     
     // 遊戲控制
-    void start();
-    void displayBoard();
-    void displayMenu();
     void play();
     
     // 遊戲狀態檢查

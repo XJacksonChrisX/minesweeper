@@ -1,24 +1,24 @@
+# Simple Makefile for Minesweeper Game
+# Compiles 5 source files without CMake
+
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
-LDFLAGS = 
-
-TARGET = minesweeper
 SOURCES = src/main.cpp src/cell.cpp src/board.cpp src/game.cpp src/display.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
+EXECUTABLE = minesweeper
 
 .PHONY: all clean
 
-all: $(TARGET)
+all: $(EXECUTABLE)
 
-$(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(OBJECTS) -o $@
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(OBJECTS) $(EXECUTABLE)
 
-.PHONY: run
-run: $(TARGET)
-	./$(TARGET)
+run: $(EXECUTABLE)
+	./$(EXECUTABLE)

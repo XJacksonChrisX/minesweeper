@@ -176,85 +176,53 @@
 
 ```
 game/
-├── CMakeLists.txt              # CMake 建置配置
-├── Makefile                    # 純 Makefile 編譯選項
+├── Makefile                    # 編譯配置 (g++/make)
 ├── README.md                   # 本文件
 ├── include/                    # 頭文件目錄
 │   ├── cell.h                  # Cell 類別定義
 │   ├── board.h                 # Board 類別定義
 │   ├── game.h                  # Game 類別定義
-│   └── display.h               # Display 類別定義 [NEW]
+│   └── display.h               # Display 類別定義
 └── src/                        # 源代碼目錄
     ├── main.cpp                # 程式入口
     ├── cell.cpp                # Cell 類別實現
     ├── board.cpp               # Board 類別實現
     ├── game.cpp                # Game 類別實現
-    └── display.cpp             # Display 類別實現 [NEW]
+    └── display.cpp             # Display 類別實現
 ```
 
 ## 編譯與執行
 
 ### **系統要求**
 - C++17 或更高版本
-- CMake 3.10 或更高版本
-- Linux/macOS/Windows (支援 C++ 編譯器)
+- g++ 編譯器
+- make 工具
 
 ### **編譯步驟**
 
-#### **在 Linux/macOS 上：**
+#### **簡單三步編譯：**
 
 ```bash
 # 進入專案目錄
 cd game
 
-# 建立並進入 build 目錄
-mkdir -p build
-cd build
-
-# 使用 CMake 生成 Makefile
-cmake ..
-
-# 編譯專案
+# 編譯所有源文件
 make
 
 # 執行遊戲
 ./minesweeper
 ```
 
-#### **在 Windows 上：**
+#### **清理編譯產物：**
 
 ```bash
-# 進入專案目錄
-cd game
-
-# 建立並進入 build 目錄
-mkdir build
-cd build
-
-# 使用 CMake 生成 Visual Studio 專案
-cmake ..
-
-# 使用 Visual Studio 開啟並編譯
-# 或使用 cmake --build . 命令
-
-# 執行遊戲
-minesweeper.exe
-```
-
-### **使用 Makefile 編譯（無需 CMake）**
-
-```bash
-# 進入專案目錄
-cd game
-
-# 編譯（編譯 5 個源文件）
-make
-
-# 執行遊戲
-./minesweeper
-
-# 清理編譯產物
 make clean
+```
+
+#### **一鍵編譯並執行：**
+
+```bash
+make run
 ```
 
 ### **執行遊戲**

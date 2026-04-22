@@ -1,14 +1,5 @@
 # 踩地雷遊戲
 
-## ⚡ 快速開始（5 秒遊玩）
-
-**Windows 用戶：** 雙擊 `run.bat` 檔案  
-**Mac/Linux 用戶：** 雙擊 `run.sh` 檔案 或執行 `bash run.sh`
-
-完成！遊戲會自動編譯並執行。
-
----
-
 ## 系級班級
 資工系3B - 第20組
 
@@ -22,7 +13,18 @@
 ## 小專題題目
 **踩地雷遊戲 (Minesweeper Game)**
 
-## 程式介紹
+## 🚀 快速開始
+
+### **不想複雜？只需一步！**
+
+| 平台 | 方式 |
+|------|------|
+| **Windows** | 下載 ZIP → 解壓 → **雙擊 `build.bat`** |
+| **Linux / macOS** | 下載 ZIP → 解壓 → 開終端 → **執行 `./build.sh`** |
+
+自動編譯 + 開始遊戲，完成！
+
+---
 
 ### **專案概述**
 這是一個使用 C++ 開發的經典踩地雷遊戲。遊戲提供三個難度等級，玩家需要通過邏輯推理和運氣來揭露所有非地雷的格子，同時避免踩到地雷。
@@ -181,88 +183,71 @@
 **相鄰地雷計算**
 針對每個非地雷格子，檢查其 8 個相鄰方向，計算地雷個數。
 
-### **檔案結構**
+### **檔案結構 (5 個獨立源文件)**
 
 ```
 game/
-├── run.bat                     # 一鍵執行 (Windows)
-├── run.sh                      # 一鍵執行 (Mac/Linux)
-├── Makefile                    # make 編譯配置
+├── build.bat                   # 一鍵編譯運行（Windows）
+├── build.sh                    # 一鍵編譯運行（Linux/macOS）
+├── Makefile                    # 編譯配置 (g++/make)
 ├── README.md                   # 本文件
 ├── include/                    # 頭文件目錄
-│   ├── cell.h
-│   ├── board.h
-│   ├── game.h
-│   └── display.h
-└── src/                        # 源代碼目錄 (5 個源文件)
-    ├── main.cpp
-    ├── cell.cpp
-    ├── board.cpp
-    ├── game.cpp
-    └── display.cpp
+│   ├── cell.h                  # Cell 類別定義
+│   ├── board.h                 # Board 類別定義
+│   ├── game.h                  # Game 類別定義
+│   └── display.h               # Display 類別定義
+└── src/                        # 源代碼目錄
+    ├── main.cpp                # 程式入口
+    ├── cell.cpp                # Cell 類別實現
+    ├── board.cpp               # Board 類別實現
+    ├── game.cpp                # Game 類別實現
+    └── display.cpp             # Display 類別實現
 ```
 
 ## 編譯與執行
 
-### **最簡單方法（推薦）**
+### **最簡單方式（推薦）**
 
 #### **Windows：**
-1. 確保已安裝 g++ 編譯器（[安裝指南](#需要安裝什麼)）
-2. **雙擊 `run.bat`** 檔案
-3. 遊戲會自動編譯並執行
+1. 從 GitHub 下載 ZIP 並解壓
+2. **雙擊 `build.bat`** 即可自動編譯並執行遊戲
 
-#### **Mac/Linux：**
-1. 確保已安裝 g++ 編譯器（通常已安裝）
-2. **雙擊 `run.sh`** 檔案  
-   或在終端執行：`bash run.sh`
-3. 遊戲會自動編譯並執行
+#### **Linux / macOS：**
+1. 從 GitHub 下載 ZIP 並解壓
+2. 打開終端，進入資料夾：
+   ```bash
+   cd minesweeper
+   ```
+3. **執行編譯腳本：**
+   ```bash
+   ./build.sh
+   ```
+   自動編譯並執行遊戲
 
 ---
 
-### **手動編譯方法**
+### **系統要求**
+- **Windows**：MinGW-w64 或 Visual Studio / Dev C++（g++ 編譯器）
+- **Linux**：g++、make 工具
+- **macOS**：Xcode 命令行工具或 Homebrew 的 gcc
 
-如果你想手動編譯：
+### **手動編譯方式（可選）**
+
+如果不想用編譯腳本，也可手動執行：
 
 ```bash
-cd game
-make        # 編譯
-./minesweeper  # 執行（Mac/Linux）
-minesweeper.exe  # 執行（Windows）
-```
+# 進入資料夾
+cd minesweeper
 
-**清理編譯產物：**
-```bash
+# 編譯（使用 Makefile）
+make
+
+# 執行遊戲
+./minesweeper        # Linux/macOS
+minesweeper.exe      # Windows
+
+# 清理編譯產物
 make clean
-```
-
----
-
-### **需要安裝什麼**
-
-#### **Windows 用戶：**
-需要安裝 **MinGW-w64** g++ 編譯器：
-
-方法 1（推薦）：使用 Chocolatey
-```powershell
-choco install mingw-w64
-```
-
-方法 2：手動下載
-- https://www.mingw-w64.org/
-
-#### **Mac 用戶：**
-```bash
-# 使用 Homebrew 安裝 gcc
-brew install gcc
-```
-
-#### **Linux 用戶：**
-```bash
-# Ubuntu/Debian
-sudo apt-get install g++
-
-# Fedora/RHEL
-sudo dnf install gcc-c++
 ```
 
 ### **執行遊戲**

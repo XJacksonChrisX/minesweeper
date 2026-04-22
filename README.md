@@ -47,6 +47,16 @@ game/
 └── README.md       # 項目說明
 ```
 
+## ⬇️ 下載遊戲
+
+點擊下方連結即可下載遊戲的完整原始碼（ZIP 格式）：
+
+👉 **[下載踩地雷遊戲 (ZIP)](https://github.com/XJacksonChrisX/minesweeper/archive/refs/heads/main.zip)**
+
+下載後解壓縮，直接在瀏覽器中開啟 `index.html` 即可遊玩，無需安裝任何軟體。
+
+---
+
 ## 🚀 使用方法
 
 1. 在瀏覽器中打開 `index.html` 文件

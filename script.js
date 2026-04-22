@@ -286,6 +286,89 @@ function updateMineCount(count) {
     document.getElementById('mineCount').textContent = count;
 }
 
+// 下載遊戲為獨立 HTML 檔案
+function downloadGame() {
+    const styleContent = document.querySelector('link[rel="stylesheet"]')
+        ? fetch('style.css').then(r => r.text()).catch(() => '')
+        : Promise.resolve('');
+    const scriptContent = fetch('script.js').then(r => r.text()).catch(() => '');
+
+    Promise.all([styleContent, scriptContent]).then(([css, js]) => {
+        // 移除下載功能本身，避免遞迴嵌入
+        const jsWithoutDownload = js.replace(/\/\/ 下載遊戲為獨立 HTML 檔案[\s\S]*?\/\/ 事件監聽器/, '// 事件監聽器');
+
+        const html = `<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>踩地雷遊戲</title>
+    <style>${css}</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💣 踩地雷遊戲</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="stat-label">地雷數：</span>
+                    <span id="mineCount" class="stat-value">10</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">時間：</span>
+                    <span id="timer" class="stat-value">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="difficulty-buttons">
+                <button class="diff-btn" data-difficulty="easy">簡單</button>
+                <button class="diff-btn" data-difficulty="medium">中等</button>
+                <button class="diff-btn" data-difficulty="hard">困難</button>
+            </div>
+            <div class="action-buttons">
+                <button id="restartBtn" class="restart-btn">新遊戲</button>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="game-board"></div>
+
+        <div id="gameOver" class="game-over hidden">
+            <div class="game-over-content">
+                <h2 id="gameOverText"></h2>
+                <p id="gameStats"></p>
+                <button id="playAgainBtn" class="play-again-btn">再玩一次</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>遊戲說明</h3>
+            <ul>
+                <li>🖱️ 左鍵：開啟格子</li>
+                <li>🚩 右鍵：標記地雷</li>
+                <li>安全開啟所有非地雷格子即可獲勝</li>
+                <li>踩到地雷則遊戲失敗</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>${jsWithoutDownload}<\/script>
+</body>
+</html>`;
+
+        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'minesweeper.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+}
+
 // 事件監聽器
 document.addEventListener('DOMContentLoaded', () => {
     // 難度按鈕
@@ -304,6 +387,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('playAgainBtn').addEventListener('click', () => {
         initGame(gameState.currentDifficulty);
     });
+
+    // 下載遊戲按鈕
+    document.getElementById('downloadBtn').addEventListener('click', downloadGame);
 
     // 初始化遊戲
     initGame('medium');

@@ -1,0 +1,3 @@
+/workspaces/game/build/CMakeFiles/minesweeper.dir
+/workspaces/game/build/CMakeFiles/edit_cache.dir
+/workspaces/game/build/CMakeFiles/rebuild_cache.dir

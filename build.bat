@@ -1,48 +1,53 @@
 @echo off
-REM 踩地雷遊戲 - Windows 編譯腳本
+REM Minesweeper Game - Windows Build Script
 
 echo.
-echo ========================================
-echo  踩地雷遊戲 - 編譯並執行
-echo ========================================
+echo Compiling Minesweeper Game...
 echo.
 
-REM 檢查編譯器
+REM Check if g++ exists
 where g++ >nul 2>nul
 if %errorlevel% neq 0 (
-    echo 錯誤：找不到 g++ 編譯器
-    echo 請先安裝 MinGW-w64 或 Dev C++
-    echo 下載：https://www.mingw-w64.org/
+    echo Error: g++ not found
+    echo Please install MinGW-w64: https://www.mingw-w64.org/
     pause
     exit /b 1
 )
 
-REM 清理舊檔案
-echo 清理舊檔案...
-if exist minesweeper.exe del minesweeper.exe
-del src\*.o 2>nul
+REM Clean old files
+del /q minesweeper.exe 2>nul
+del /q src\*.o 2>nul
 
-REM 編譯
-echo.
-echo 編譯中...
+REM Compile
 g++ -std=c++17 -Wall -Wextra -Iinclude -c src/main.cpp -o src/main.o
+if %errorlevel% neq 0 goto :error
+
 g++ -std=c++17 -Wall -Wextra -Iinclude -c src/cell.cpp -o src/cell.o
+if %errorlevel% neq 0 goto :error
+
 g++ -std=c++17 -Wall -Wextra -Iinclude -c src/board.cpp -o src/board.o
+if %errorlevel% neq 0 goto :error
+
 g++ -std=c++17 -Wall -Wextra -Iinclude -c src/game.cpp -o src/game.o
+if %errorlevel% neq 0 goto :error
+
 g++ -std=c++17 -Wall -Wextra -Iinclude -c src/display.cpp -o src/display.o
+if %errorlevel% neq 0 goto :error
+
 g++ src/main.o src/cell.o src/board.o src/game.o src/display.o -o minesweeper.exe
+if %errorlevel% neq 0 goto :error
 
-if %errorlevel% neq 0 (
-    echo.
-    echo 編譯失敗！
-    pause
-    exit /b 1
-)
-
-REM 執行
 echo.
-echo 編譯成功！開始遊戲...
+echo Build successful! Starting game...
 echo.
 minesweeper.exe
+goto :end
 
+:error
+echo.
+echo Compilation failed!
+pause
+exit /b 1
+
+:end
 pause

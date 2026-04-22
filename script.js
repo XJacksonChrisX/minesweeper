@@ -288,15 +288,12 @@ function updateMineCount(count) {
 
 // 下載遊戲為獨立 HTML 檔案
 function downloadGame() {
-    const styleContent = document.querySelector('link[rel="stylesheet"]')
-        ? fetch('style.css').then(r => r.text()).catch(() => '')
-        : Promise.resolve('');
+    const styleLink = document.querySelector('link[rel="stylesheet"]');
+    const cssUrl = styleLink ? styleLink.href : 'style.css';
+    const styleContent = fetch(cssUrl).then(r => r.text()).catch(() => '');
     const scriptContent = fetch('script.js').then(r => r.text()).catch(() => '');
 
     Promise.all([styleContent, scriptContent]).then(([css, js]) => {
-        // 移除下載功能本身，避免遞迴嵌入
-        const jsWithoutDownload = js.replace(/\/\/ 下載遊戲為獨立 HTML 檔案[\s\S]*?\/\/ 事件監聽器/, '// 事件監聽器');
-
         const html = `<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -353,7 +350,7 @@ function downloadGame() {
         </div>
     </div>
 
-    <script>${jsWithoutDownload}<\/script>
+    <script>${js}<\/script>
 </body>
 </html>`;
 
@@ -389,7 +386,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 下載遊戲按鈕
-    document.getElementById('downloadBtn').addEventListener('click', downloadGame);
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadGame);
+    }
 
     // 初始化遊戲
     initGame('medium');

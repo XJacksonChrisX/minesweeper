@@ -15,36 +15,34 @@
 
 ## 🚀 快速開始
 
-### **Windows 用戶：下載 exe**
+### **Windows 用戶：執行 PowerShell 腳本（推薦）**
 
-**方式 1：從 GitHub Actions（自動編譯版本）**
-1. 進入本 repo → **"Actions"** 標籤
-2. 點擊最新的 **"Build Windows Executable"** 工作流
-3. 向下滑，找 **"Artifacts"** 區域
-4. 下載 **`minesweeper-windows`** 
-5. 解壓 ZIP，得到 `minesweeper.exe`
-6. **雙擊執行** → 遊戲開始！
+**第一步：安裝編譯器（只需一次）**
+1. 訪問 https://www.mingw-w64.org/downloads/
+2. 下載 **Online Installer** 或任何版本
+3. 執行安裝程式，選擇 **x86_64** 架構，按預設安裝
+4. 重啟電腦或開新終端
 
-**方式 2：自己編譯（需要 MinGW-w64）**
-```bash
-git clone https://github.com/XJacksonChrisX/minesweeper.git
-cd minesweeper
-make
-minesweeper.exe
-```
+**第二步：執行遊戲**
+1. **GitHub 下載 ZIP** 並解壓
+2. **在資料夾中按 Shift + 右鍵** → 選「在此開啟 PowerShell」（或在開始菜單搜尋 PowerShell）
+3. **執行腳本：**
+   ```powershell
+   .\build.ps1
+   ```
+4. **完成！** 腳本會自動編譯並開始遊戲
+
+（第一次可能安全警告，按 Y 確認）
 
 ---
 
-### **Linux / macOS 用戶：執行預編譯版本**
+### **Linux / macOS 用戶：執行 Makefile**
 
-1. **從 GitHub 下載 ZIP 並解壓**
-2. **打開終端，進入資料夾：**
+1. **GitHub 下載 ZIP 並解壓**
+2. **終端執行：**
    ```bash
    cd minesweeper
-   ```
-3. **執行遊戲：**
-   ```bash
-   ./minesweeper
+   make run        # 編譯並執行
    ```
 
 ---
@@ -210,9 +208,8 @@ minesweeper.exe
 
 ```
 game/
-├── build.bat                   # 一鍵編譯運行（Windows）
-├── build.sh                    # 一鍵編譯運行（Linux/macOS）
-├── Makefile                    # 編譯配置 (g++/make)
+├── build.ps1                   # 一鍵編譯運行（Windows PowerShell）
+├── Makefile                    # 編譯配置 (Linux/macOS)
 ├── README.md                   # 本文件
 ├── include/                    # 頭文件目錄
 │   ├── cell.h                  # Cell 類別定義

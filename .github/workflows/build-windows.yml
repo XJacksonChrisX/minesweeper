@@ -14,7 +14,6 @@ jobs:
 
     - name: Build with g++
       run: |
-        cd ${{ github.workspace }}
         g++ -std=c++17 -Wall -Wextra -Iinclude -c src/main.cpp -o src/main.o
         g++ -std=c++17 -Wall -Wextra -Iinclude -c src/cell.cpp -o src/cell.o
         g++ -std=c++17 -Wall -Wextra -Iinclude -c src/board.cpp -o src/board.o
@@ -22,13 +21,19 @@ jobs:
         g++ -std=c++17 -Wall -Wextra -Iinclude -c src/display.cpp -o src/display.o
         g++ src/main.o src/cell.o src/board.o src/game.o src/display.o -o minesweeper.exe
 
-    - name: Upload to Release
-      uses: softprops/action-gh-release@v1
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
       with:
-        tag_name: latest
-        files: minesweeper.exe
-        body: |
-          Windows executable for Minesweeper Game
-          Download minesweeper.exe and double-click to play!
+        name: minesweeper-windows
+        path: minesweeper.exe
+
+    - name: Create Release
+      if: always()
+      uses: ncipollo/release-action@v1
+      with:
+        tag: "latest"
+        artifacts: "minesweeper.exe"
+        body: "Windows executable for Minesweeper Game. Download and double-click to play!"
+        allowUpdates: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

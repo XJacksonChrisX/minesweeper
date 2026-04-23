@@ -15,28 +15,21 @@
 
 ## 🚀 快速開始
 
-### **Windows 用戶：執行 PowerShell 腳本（推薦）**
+### **最簡單方式：線上直接玩（無需安裝任何東西）**
 
-**第一步：安裝編譯器（只需一次）**
-1. 訪問 https://www.mingw-w64.org/downloads/
-2. 下載 **Online Installer** 或任何版本
-3. 執行安裝程式，選擇 **x86_64** 架構，按預設安裝
-4. 重啟電腦或開新終端
-
-**第二步：執行遊戲**
-1. **GitHub 下載 ZIP** 並解壓
-2. **在資料夾中按 Shift + 右鍵** → 選「在此開啟 PowerShell」（或在開始菜單搜尋 PowerShell）
-3. **執行腳本：**
-   ```powershell
-   .\build.ps1
+**GitHub Codespaces（推薦）**
+1. 進入本 repo 主頁，點綠色 **"Code"** 按鈕
+2. 選 **"Codespaces"** → **"Create codespace on main"**
+3. 等待環境載入（約 1-2 分鐘）
+4. 在終端執行：
+   ```bash
+   make run
    ```
-4. **完成！** 腳本會自動編譯並開始遊戲
-
-（第一次可能安全警告，按 Y 確認）
+5. **遊戲開始！** 線上玩，無需下載安裝編譯器
 
 ---
 
-### **Linux / macOS 用戶：執行 Makefile**
+### **Linux / macOS 用戶：本地執行**
 
 1. **GitHub 下載 ZIP 並解壓**
 2. **終端執行：**
@@ -44,6 +37,12 @@
    cd minesweeper
    make run        # 編譯並執行
    ```
+
+---
+
+### **Windows 用戶：也用 GitHub Codespaces（推薦）**
+
+不想麻煩？就用上面的 Codespaces 方法，線上玩！
 
 ---
 

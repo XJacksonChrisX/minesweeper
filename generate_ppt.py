@@ -134,20 +134,14 @@ def add_two_column_slide(prs, title, left_title, left_items, right_title, right_
         p.space_before = Pt(4)
         p.space_after = Pt(4)
 
-# 第 1 頁：標題頁
-add_title_slide(prs, "踩地雷遊戲", "Minesweeper Game\n資工系 3B - 第 20 組")
+# 第 1 頁：組別
+add_title_slide(prs, "組別", "第 20 組")
 
-# 第 2 頁：專案概述
-add_content_slide(prs, "專案概述", [
-    "• 一個使用 C++ 開發的經典踩地雷遊戲",
-    "• 提供三個難度等級供玩家選擇",
-    "• 透過邏輯推理和運氣揭露所有非地雷格子",
-    "• 結合命令列介面與圖形化顯示",
-    "• 支援 Windows、Linux、macOS 跨平台執行"
-])
+# 第 2 頁：系級班級
+add_title_slide(prs, "系級班級", "資訊工程系 3B")
 
 # 第 3 頁：成員資訊
-add_content_slide(prs, "專案團隊", [
+add_content_slide(prs, "成員資訊", [
     "組長：詹書豪 (B2230041)",
     "      負責：專案規劃與整合、程式設計與測試",
     "",
@@ -156,95 +150,62 @@ add_content_slide(prs, "專案團隊", [
     "組員：林元皓 (B3401214)"
 ])
 
-# 第 4 頁：遊戲規則
-add_content_slide(prs, "遊戲規則", [
-    "1. 選擇難度等級，遊戲隨機布置地雷",
-    "2. 輸入坐標揭露格子",
-    "3. 格子顯示：",
-    "   💣 地雷（遊戲失敗）",
-    "   · 空格（周圍沒有地雷）",
-    "   1-8 相鄰地雷個數",
-    "4. 標記懷疑的地雷位置（🚩）",
-    "5. 揭露所有非地雷格子即獲勝"
-])
+# 第 4 頁：小專題題目
+add_title_slide(prs, "小專題題目", "踩地雷遊戲\n(Minesweeper Game)")
 
-# 第 5 頁：難度等級
-add_two_column_slide(prs, "難度等級與設定",
-    "難度等級", [
-        "簡單",
-        "中等",
-        "困難"
-    ],
-    "對應設定", [
-        "8×8 棋盤，10 個地雷",
-        "12×12 棋盤，30 個地雷",
-        "16×16 棋盤，40 個地雷"
-    ]
-)
-
-# 第 6 頁：系統架構 - 類別設計
-add_content_slide(prs, "系統架構 - 核心類別", [
-    "Cell 類別：",
-    "  • 代表棋盤上的單一格子",
-    "  • 屬性：是否為地雷、是否揭露、是否標記、相鄰地雷數",
+# 第 5 頁：程式介紹 - UML 與遊戲規則
+add_content_slide(prs, "程式介紹 (UML 圖與操作說明)", [
+    "系統架構設計：",
+    "  • Cell 類別 - 代表棋盤上的單一格子",
+    "  • Board 類別 - 管理棋盤狀態和地雷位置",
+    "  • Game 類別 - 控制遊戲主邏輯",
+    "  • Display 類別 - 負責棋盤顯示",
     "",
-    "Board 類別：",
-    "  • 管理整個棋盤的狀態",
-    "  • 地雷位置隨機生成、計算相鄰地雷數"
+    "遊戲規則：選擇難度 → 揭露格子 → 避開地雷 → 標記疑似地雷 → 贏得遊戲"
 ])
 
-# 第 7 頁：系統架構 - 遊戲流程
-add_content_slide(prs, "系統架構 - 遊戲流程", [
-    "Game 類別：",
-    "  • 控制遊戲主邏輯",
-    "  • 管理遊戲狀態（進行中、勝利、失敗）",
-    "  • 處理玩家輸入和遊戲進行",
+# 第 6 頁：程式如何安裝執行（圖文講解）
+add_content_slide(prs, "程式如何安裝執行", [
+    "快速開始（Windows 用戶）：",
+    "1. 進入 Releases 頁面",
+    "2. 下載最新的 minesweeper.exe",
+    "3. 雙擊執行",
     "",
-    "Display 類別：",
-    "  • 負責將棋盤狀態顯示給玩家"
+    "Linux / macOS 用戶：",
+    "1. 下載並解壓 ZIP 檔案",
+    "2. 進入資料夾執行 ./minesweeper"
 ])
 
-# 第 8 頁：專案結構
-add_two_column_slide(prs, "專案文件結構",
-    "標頭檔案", [
-        "board.h - 棋盤類別",
-        "cell.h - 格子類別",
-        "display.h - 顯示類別",
-        "game.h - 遊戲類別"
-    ],
-    "源程式檔案", [
-        "main.cpp - 主程式入口",
-        "board.cpp - 棋盤實現",
-        "cell.cpp - 格子實現",
-        "display.cpp - 顯示實現",
-        "game.cpp - 遊戲實現"
-    ]
-)
-
-# 第 9 頁：編譯與執行
-add_content_slide(prs, "編譯與執行", [
-    "使用 Makefile 簡化編譯過程：",
+# 第 7 頁：程式畫面截圖
+add_content_slide(prs, "程式畫面示範", [
+    "遊戲開始畫面：",
+    "  ┌─────────────────────┐",
+    "  │  踩地雷遊戲        │",
+    "  │  1. 簡單  2. 中等  3. 困難",
+    "  │  請選擇難度：     │",
+    "  └─────────────────────┘",
     "",
-    "編譯：make",
-    "執行：./minesweeper（Linux/macOS）或 minesweeper.exe（Windows）",
-    "清理：make clean",
+    "遊戲中顯示：棋盤格子、地雷數量、遊戲狀態",
+    "遊戲結束：勝利或失敗訊息顯示"
+])
+
+# 第 8 頁：分工資訊
+add_content_slide(prs, "分工資訊", [
+    "詹書豪 (B2230041) - 組長",
+    "  • 整體專案規劃與架構設計",
+    "  • Cell 類別開發",
+    "  • Board 類別開發",
+    "  • 程式整合與測試",
     "",
-    "系統要求：g++ 編譯器、C++17 標準"
+    "李程絛 (B2230319) & 林元皓 (B3401214)",
+    "  • 輔助開發和測試"
 ])
 
-# 第 10 頁：特色與亮點
-add_content_slide(prs, "特色與亮點", [
-    "✓ 跨平台支援（Windows、Linux、macOS）",
-    "✓ 提供三個難度等級滿足不同玩家需求",
-    "✓ 清晰的面向物件設計",
-    "✓ 支援遊戲狀態保存與恢復",
-    "✓ 直觀的命令列介面",
-    "✓ 完整的文件與註解說明"
-])
-
-# 第 11 頁：結語
-add_title_slide(prs, "感謝觀看", "踩地雷遊戲專案示範完畢")
+# 第 9 頁：GitHub 連結
+add_title_slide(prs, "GitHub 連結", 
+    "Repository:\nhttps://github.com/XJacksonChrisX/minesweeper\n\nDownload: Releases 頁面")
 
 # 保存簡報
 prs.save('/workspaces/game/踩地雷遊戲_專題報告.pptx')
-print("✓ PPT 檔案已成功生成：踩地雷遊戲_專題報告.pptx")
+print("✓ PPT 檔案已成功重新生成：踩地雷遊戲_專題報告.pptx")
+print("✓ 共 9 頁，按照要求順序排版")

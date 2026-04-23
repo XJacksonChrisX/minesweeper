@@ -15,13 +15,23 @@
 
 ## 🚀 快速開始
 
-### **Windows 用戶：最簡單方式**
+### **Windows 用戶：下載 exe**
 
-1. **進入 [Releases](../../releases) 頁面**
-2. **下載最新的 `minesweeper.exe`**
-3. **雙擊執行，開始遊戲！**
+**方式 1：從 GitHub Actions（自動編譯版本）**
+1. 進入本 repo → **"Actions"** 標籤
+2. 點擊最新的 **"Build Windows Executable"** 工作流
+3. 向下滑，找 **"Artifacts"** 區域
+4. 下載 **`minesweeper-windows`** 
+5. 解壓 ZIP，得到 `minesweeper.exe`
+6. **雙擊執行** → 遊戲開始！
 
-不需要安裝任何東西，直接玩。
+**方式 2：自己編譯（需要 MinGW-w64）**
+```bash
+git clone https://github.com/XJacksonChrisX/minesweeper.git
+cd minesweeper
+make
+minesweeper.exe
+```
 
 ---
 
@@ -36,19 +46,6 @@
    ```bash
    ./minesweeper
    ```
-
----
-
-## ⚙️ 如果需要重新編譯（修改程式碼後）
-
-進入資料夾，執行：
-```bash
-make           # 編譯所有源文件
-./minesweeper  # Linux/macOS
-minesweeper.exe # Windows
-```
-
-系統要求：g++ 編譯器、C++17 標準
 
 ---
 

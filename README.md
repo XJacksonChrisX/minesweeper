@@ -15,45 +15,26 @@
 
 ## 🚀 快速開始
 
-### **不想複雜？只需一步！**
+### **最簡單方式：直接運行**
 
-| 平台 | 方式 |
-|------|------|
-| **Windows** | 下載 ZIP → 解壓 → **雙擊 `build.bat`** |
-| **Linux / macOS** | 下載 ZIP → 解壓 → 開終端 → **執行 `./build.sh`** |
+1. **從 GitHub 下載 ZIP 並解壓**
 
-自動編譯 + 開始遊戲，完成！
+2. **運行遊戲：**
+   - **Windows / Linux / macOS**：雙擊或執行 `minesweeper`（或 `minesweeper.exe` in Windows）
 
----
-
-## ⚙️ 環境設置
-
-### **Windows：安裝編譯器（第一次必做）**
-
-如果看到「g++ not found」的錯誤，需要先安裝 MinGW-w64。
-
-**最快方式（推薦）：用 Chocolatey**
-
-1. **以管理員身份打開 PowerShell**
-   - 在 Windows 開始菜單搜尋「PowerShell」
-   - 右鍵選「以系統管理員身份執行」
-
-2. **複製貼上這一行，按 Enter：**
-   ```powershell
-   choco install mingw-w64 -y
-   ```
-   （如果沒有 Chocolatey，會提示先裝它，按 Y 即可）
-
-3. **安裝完後，重開一個 CMD 視窗，重新執行 `build.bat`**
+3. **開始遊戲！** 不需要編譯，不需要複雜的命令。
 
 ---
 
-**或手動安裝：**
-- 訪問 https://www.mingw-w64.org/
-- 下載安裝程式，按默認選項安裝
-- 確保安裝路徑加入 Windows PATH 環境變數
+## ⚙️ 如果需要重新編譯（修改程式碼後）
 
-完成後，`build.bat` 就能正常執行了！
+進入資料夾，執行：
+```bash
+make           # 編譯所有源文件
+./minesweeper  # 執行遊戲
+```
+
+系統要求：g++ 編譯器、C++17 標準
 
 ---
 

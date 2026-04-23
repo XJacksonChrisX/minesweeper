@@ -1,11 +1,9 @@
 # Compilation artifacts
 *.o
-minesweeper
-*.exe
+*.out
 
 # Build directories
 build/
-*.out
 
 # IDE files
 .vscode/

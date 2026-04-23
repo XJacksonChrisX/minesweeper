@@ -15,34 +15,29 @@
 
 ## 🚀 快速開始
 
-### **最簡單方式：線上直接玩（無需安裝任何東西）**
+### **所有用戶都用同一個步驟：GitHub Codespaces（線上玩，無需安裝任何東西）**
 
-**GitHub Codespaces（推薦）**
-1. 進入本 repo 主頁，點綠色 **"Code"** 按鈕
-2. 選 **"Codespaces"** → **"Create codespace on main"**
-3. 等待環境載入（約 1-2 分鐘）
-4. 在終端執行：
+1. **進入本 repo → 點綠色 "Code" 按鈕**
+2. **選 "Codespaces" → "Create codespace on main"**
+3. **等待環境載入（約 1-2 分鐘）**
+4. **在終端輸入：**
    ```bash
    make run
    ```
-5. **遊戲開始！** 線上玩，無需下載安裝編譯器
+5. **遊戲開始！**
 
 ---
 
-### **Linux / macOS 用戶：本地執行**
+### **或者：本地執行（如果電腦已有 gcc/g++）**
 
-1. **GitHub 下載 ZIP 並解壓**
-2. **終端執行：**
-   ```bash
-   cd minesweeper
-   make run        # 編譯並執行
-   ```
+```bash
+# 克隆或下載 ZIP
+git clone https://github.com/XJacksonChrisX/minesweeper.git
+cd minesweeper
 
----
-
-### **Windows 用戶：也用 GitHub Codespaces（推薦）**
-
-不想麻煩？就用上面的 Codespaces 方法，線上玩！
+# 執行遊戲
+make run
+```
 
 ---
 
